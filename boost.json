@@ -1,6 +1,9 @@
 {
     "agents": [
-        "claude_code"
+        "claude_code",
+        "cursor",
+        "codex",
+        "junie"
     ],
     "cloud": true,
     "guidelines": true,
