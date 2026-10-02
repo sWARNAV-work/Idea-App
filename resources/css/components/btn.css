@@ -1,0 +1,59 @@
+button
+{
+    cursor: pointer;
+    caret-color: Transparent;
+}
+
+.btn
+{
+    background-color: var(--color-primary);
+    color: var(--color-foreground);
+    border: solid 1px transparent;
+    border-radius: var(--radius-xs);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    padding-inline: calc(var(--spacing) * 2);
+    height: calc(var(--spacing) * 8);
+    line-height: calc(var(--spacing) * 8);
+    cursor: pointer;
+    caret-color: transparent;
+    display: inline flow-root;
+}
+
+.btn.btn-outlined
+{
+    background-color: transparent;
+    color: var(--color-foreground);
+    border: solid 1px var(--color-muted-foreground);
+    /* line-height: calc(var(--spacing) * 5); */
+}
+
+.btn:hover
+{
+    background-color: color-mix(in srgb, black 20%, var(--color-primary));
+}
+
+.btn.btn-outlined:hover
+{
+    background-color: color-mix(in srgb, white 20%, var(--color-background));
+    border: solid 1px var(--color-border);
+}
+
+.btn:active,
+.btn.btn-outlined:active
+{
+    border: solid 1px var(--color-highlight);
+}
+
+.btn.button-ghost
+{
+    background-color: transparent;
+}
+
+.btn:has(> svg)
+{
+    display: inline flex;
+    align-items: center;
+    column-gap: calc(var(--spacing) * 2);
+}
+

@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+@import './components/btn.css' layer(components);    /* The layer nests this into the proper location, so that the utility classes like "mt-4" take precedence over this*/
+@import './components/form.css' layer(components);
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
@@ -7,5 +10,14 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-bla: black;
+    --color-background: oklch(0.1289 0.0406 320.26);
+    --color-foreground: oklch(0.8513 0.0928 307.16);
+    --color-card: oklch(0.2418 0.0861 311.79);
+    --color-primary: oklch(0.5479 0.2812 294.82);
+    --color-primary-foreground: oklch(0.5769 0.1255 311.79);
+    --color-border: oklch(0.7 0.09 0);
+    --color-input: oklch(0.24 0 0);
+    --color-muted-foreground: oklch(0.6 0 0);
+
+    --color-highlight: oklch(0.6446 0.2523 360);
 }
