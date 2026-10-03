@@ -9,7 +9,7 @@
             <x-form.field name="email" label="E-mail" default="Your E-mail Address" type="email" />
             <x-form.field name="password" label="Create a Password" default="Use a Strong Password" type="password"/>
 
-            <button class="btn mt-8 h-14" type="submit">Submit</button>
+            <button class="btn text-2xl mt-8 h-14" type="submit">Register & Log In</button>
         </form>
 
     </x-form>

@@ -7,7 +7,7 @@
             </a>
         </div>
         <div class="flex gap-x-4 items-center">
-            <a href="">Log In</a>
+            <a href="/login" class="btn btn-ghost">Log In</a>
             <a href="/register" class="btn">Register</a>
         </div>
     </div>

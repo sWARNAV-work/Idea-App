@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('status')->default('pending');
-            $table->string('featured_image_path')->nullable();
+            $table->string('featured-image-path')->nullable();
             $table->json('links')->default('[]');
             $table->timestamps();
         });
