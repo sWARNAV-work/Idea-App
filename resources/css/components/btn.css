@@ -9,7 +9,7 @@ button
     background-color: var(--color-primary);
     color: var(--color-foreground);
     border: solid 1px transparent;
-    border-radius: var(--radius-xs);
+    border-radius: var(--radius-sm);
     font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);
     padding-inline: calc(var(--spacing) * 2);

@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Idea</title>
     @vite (['resources/css/app.css'])
 </head>
 <body class="bg-background">
-    <h1 class="text-foreground">YELLLOOWWW THereethutohuotehueto THTHHH</h1>
-        <p class="btn">Button</p>
-        <p class="btn btn-outlined">Outlined</p>
+    <header>
+        <x-layout.nav /> <!-- Shorthand -->
+    </header>
+    <main class="text-foreground max-w-7xl mx-auto px-6 pt-5">
+        {{ $slot }}
+    </main>
 </body>
 </html>

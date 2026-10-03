@@ -15,7 +15,7 @@
     --color-card: oklch(0.2418 0.0861 311.79);
     --color-primary: oklch(0.5479 0.2812 294.82);
     --color-primary-foreground: oklch(0.5769 0.1255 311.79);
-    --color-border: oklch(0.7 0.09 0);
+    --color-border: oklch(0.3 0.09 0);
     --color-input: oklch(0.24 0 0);
     --color-muted-foreground: oklch(0.6 0 0);
 
