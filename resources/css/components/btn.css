@@ -7,17 +7,19 @@ button
 .btn
 {
     background-color: var(--color-primary);
-    color: var(--color-foreground);
+    color: var(--color-background);
     border: solid 1px transparent;
     border-radius: var(--radius-sm);
-    font-size: var(--text-sm);
-    font-weight: var(--font-weight-medium);
+    font-size: var(--text-m);
+    font-weight: var(--font-weight-bold);
     padding-inline: calc(var(--spacing) * 2);
     height: calc(var(--spacing) * 8);
     line-height: calc(var(--spacing) * 8);
     cursor: pointer;
     caret-color: transparent;
     display: inline flow-root;
+
+    letter-spacing: var(--tracking-wide);
 }
 
 .btn.btn-outlined
