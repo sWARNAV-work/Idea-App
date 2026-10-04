@@ -2,7 +2,7 @@
 
     <div class="flex justify-between py-2">
         <div>
-            <a href="">
+            <a href="/">
                 <img src="/images/logo.png" width="150" alt="Idea Fabricator logo">
             </a>
         </div>

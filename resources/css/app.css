@@ -21,3 +21,8 @@
 
     --color-highlight: oklch(0.6446 0.2523 360);
 }
+
+*
+{
+    caret-color: transparent;
+}

@@ -22,6 +22,7 @@ form
     padding-inline: --spacing(2);
     height: --spacing(8);
     line-height: --spacing(8);
+    caret-color: white !important;
 }
 
 .input::placeholder
