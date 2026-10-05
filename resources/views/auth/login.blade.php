@@ -6,7 +6,7 @@
             
             <x-form.field name="email" label="E-mail" type="email" default="Enter Your Registered E-mail" />
             <x-form.field name="password" label="Password" type="password" default="Enter Password" />
-            <button type="submit" class="btn h-14 mt-8 text-2xl">Log In</button>
+            <button type="submit" class="btn h-14 mt-8 text-2xl" data-test="login-btn">Log In</button>
 
         </form>
     </x-form>

@@ -21,8 +21,8 @@ class SessionsController extends Controller
         if(!Auth::attempt($attributes))
         {
             return back()
-                ->withErrors(['email' => 'Please re-check your credentials'])
-                ->withInput();
+                ->withErrors(['email' => 'Please re-check your credentials.'])
+                ->withInput($request->only('email'));           // CodeRabbit said to only return email, i.e. return only non sensitive fields.
         }
 
         $request->session()->regenerate();
@@ -31,8 +31,9 @@ class SessionsController extends Controller
 
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $request->session()->regenerate(); //CodeRabbit mentioned doing this here as well, this follows laravel's logout procedure.
         Auth::logout();
         return redirect('/');
     }
