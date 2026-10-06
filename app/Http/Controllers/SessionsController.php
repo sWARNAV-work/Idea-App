@@ -33,8 +33,8 @@ class SessionsController extends Controller
 
     public function destroy(Request $request)
     {
+        Auth::logout(); 
         $request->session()->regenerate(); //CodeRabbit mentioned doing this here as well, this follows laravel's logout procedure.
-        Auth::logout();
         return redirect('/');
     }
 }

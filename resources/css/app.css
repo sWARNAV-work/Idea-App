@@ -2,6 +2,7 @@
 
 @import './components/btn.css' layer(components);    /* The layer nests this into the proper location, so that the utility classes like "mt-4" take precedence over this*/
 @import './components/form.css' layer(components);
+@import './components/alert.css' layer(components);
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

@@ -15,6 +15,11 @@
     
     <main class="text-foreground max-w-7xl mx-auto px-6 pt-5">
         {{ $slot }}
+
+        @session('success')
+            <div class="alert" >{{ $value }}</div>
+        @endsession
+
     </main>
 </body>
 

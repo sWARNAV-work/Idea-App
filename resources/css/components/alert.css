@@ -1,0 +1,26 @@
+.alert
+{
+    background-color: lightgreen;
+    color: black;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    height: --spacing(10);
+    line-height: --spacing(10);
+    padding-inline: --spacing(5);
+    border-radius: var(--radius-md);
+    animation: 1s ease-out 5s 1 forwards notification;
+}
+
+@keyframes notification 
+{
+    0% 
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
