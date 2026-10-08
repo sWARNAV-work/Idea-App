@@ -11,9 +11,9 @@ enum IdeaStatus: string
     public function label (): string
     {
         return match ($this) {
-            self::PENDING => 'The Job is Pending',
-            self::COMPLETED => 'This Job is Done',
-            self::IN_PROGRESS => 'This Job is Still Going On'
+            self::PENDING => 'Fabrication-Pending',
+            self::COMPLETED => 'Fabrica-ted',
+            self::IN_PROGRESS => 'Fabrica-ting'
         };
     }
 }

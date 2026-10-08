@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
+use App\IdeaStatus;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 
