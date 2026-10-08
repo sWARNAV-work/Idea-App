@@ -29,3 +29,15 @@ form
 {
     color: var(--color-muted-foreground);
 }
+
+.card
+{
+    background-color: var(--color-card);
+    border-radius: var(--radius-sm);
+    color: color-mix(in srgb, white 20%, var(--color-muted-foreground));
+    font-size: var(--text-lg);
+    max-inline-size: --spacing(150); /* Might be min-inline-size */
+    padding-inline: --spacing(3);
+    line-height: --spacing(6);
+    border: solid 1px color-mix(in srgb, black 71%, var(--color-highlight));
+}
