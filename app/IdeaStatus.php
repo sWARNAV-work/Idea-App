@@ -12,8 +12,8 @@ enum IdeaStatus: string
     {
         return match ($this) {
             self::PENDING => 'Fabrication-Pending',
-            self::COMPLETED => 'Fabrica-ted',
-            self::IN_PROGRESS => 'Fabrica-ting'
+            self::COMPLETED => 'Fabricated',
+            self::IN_PROGRESS => 'Fabricating'
         };
     }
 }

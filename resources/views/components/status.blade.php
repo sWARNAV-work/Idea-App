@@ -1,4 +1,4 @@
-@props(['status'])
+@props(['status' => 'pending'])
 @php
     $classes = "btn uppercase rounded-2xl";
 
@@ -17,6 +17,6 @@
 
 @endphp
 
-<div class="{{ $classes }}">
+<div {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
 </div>
