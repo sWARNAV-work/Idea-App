@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::unguard();                                   // Allows all attributes to be mass assigned. 
+        Model::unguard();                                   // Allows all attributes to be mass assigned.
         Model::shouldBeStrict();                            // Enable strict mode for DB, forcing to write clean code and catching silent bugs.
-        Model::automaticallyEagerLoadRelationships();       // Handling n+1 issues. 
+        Model::automaticallyEagerLoadRelationships();       // Handling n+1 issues.
     }
 }

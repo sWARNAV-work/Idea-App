@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIdeaRequest;
@@ -8,7 +10,6 @@ use App\IdeaStatus;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 
-
 class IdeaController extends Controller
 {
     /**
@@ -16,15 +17,22 @@ class IdeaController extends Controller
      */
     public function index()
     {
+
+        $status = request('status');
+
+        if (! in_array($status, IdeaStatus::values())) {
+            $status = null;
+        }
+
         $ideas = Auth::user()->ideas()
-            ->when(request('status'), fn($query, $status) => $query->where('status', $status))
+            ->when($status, fn ($query, $status) => $query->where('status', $status))
             ->get();
 
         $counts = Idea::getStatusCounts(Auth::user());
 
         return view('idea.index', [
             'ideas' => $ideas,
-            'statuses' => $counts
+            'statuses' => $counts,
         ]);
     }
 
@@ -52,7 +60,7 @@ class IdeaController extends Controller
 
         return view('idea.show', [
             'idea' => $idea->title,
-            'description' => $idea->description
+            'description' => $idea->description,
         ]);
     }
 

@@ -3,11 +3,9 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-describe('Register tests', function ()
-{
+describe('Register tests', function () {
 
-    it('registers a user', function ()
-    {
+    it('registers a user', function () {
         visit('/register')
             ->fill('name', 'Jamie Tart')
             ->fill('email', 'jamietart@email.com')
@@ -24,11 +22,10 @@ describe('Register tests', function ()
 
     });
 
-    it('checks the register form for wrong inputs', function ()
-    {
+    it('checks the register form for wrong inputs', function () {
 
         User::factory()->create([
-            'email' => 'jamietart@email.com'
+            'email' => 'jamietart@email.com',
         ]);
 
         visit('/register')
@@ -42,14 +39,12 @@ describe('Register tests', function ()
     });
 });
 
-describe('Login Page Tests', function ()
-{
+describe('Login Page Tests', function () {
 
-    it('logs in a user', function ()
-    {
+    it('logs in a user', function () {
         $user = User::factory()->create([
             // 'email' => 'email@email.com',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         visit('/login')
@@ -58,14 +53,13 @@ describe('Login Page Tests', function ()
             ->fill('password', 'password')
             ->click('@login-btn')
             ->assertPathIs('/');
-            
+
         $this->assertAuthenticated();
     });
 
-    it('checks the login form for wrong email input', function() 
-    {
+    it('checks the login form for wrong email input', function () {
         $user = User::factory()->create([
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         visit('/login')
@@ -75,8 +69,7 @@ describe('Login Page Tests', function ()
             ->assertSee('Please re-check your credentials.');
     });
 
-    it('checks the user for wrong inputs', function ()
-    {
+    it('checks the user for wrong inputs', function () {
         visit('/login')
             ->fill('email', 'example@email.com')
             ->fill('password', 'pp')
@@ -84,8 +77,7 @@ describe('Login Page Tests', function ()
             ->assertSee('The password field must be at least 8 characters.');
     });
 
-    it('checks whether the old Input is returned on wrong user input', function ()
-    {
+    it('checks whether the old Input is returned on wrong user input', function () {
         $email = 'email@email.com';
         $pass = 'password';
 
@@ -98,10 +90,8 @@ describe('Login Page Tests', function ()
     });
 });
 
-describe('LogOut function', function()
-{
-    it('checks the logout button', function ()
-    {
+describe('LogOut function', function () {
+    it('checks the logout button', function () {
         $user = User::factory()->create();
 
         $this->actingAs($user);

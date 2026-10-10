@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -18,8 +20,7 @@ class SessionsController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'max:255'],
         ]);
-        if(!Auth::attempt($attributes))
-        {
+        if (! Auth::attempt($attributes)) {
             return back()
                 ->withErrors(['email' => 'Please re-check your credentials.'])
                 ->withInput($request->only('email'));           // CodeRabbit said to only return email, i.e. return only non sensitive fields.
@@ -33,9 +34,10 @@ class SessionsController extends Controller
 
     public function destroy(Request $request)
     {
-        $request->session()->invalidate(); //CodeRabbit mentioned doing this here as well, this follows laravel's logout procedure.
+        $request->session()->invalidate(); // CodeRabbit mentioned doing this here as well, this follows laravel's logout procedure.
         $request->session()->regenerateToken();
         Auth::logout();
+
         return redirect('/');
     }
 }
