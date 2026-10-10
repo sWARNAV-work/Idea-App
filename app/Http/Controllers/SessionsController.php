@@ -27,7 +27,7 @@ class SessionsController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended('/')->with('success', 'You are now Logged In. Off to the races!');
+        return redirect()->intended('/ideas')->with('success', 'You are now Logged In. Off to the races!');
 
     }
 
