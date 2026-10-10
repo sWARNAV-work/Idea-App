@@ -8,7 +8,6 @@ use App\IdeaStatus;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 
-use function PHPSTORM_META\map;
 
 class IdeaController extends Controller
 {
@@ -21,16 +20,11 @@ class IdeaController extends Controller
             ->when(request('status'), fn($query, $status) => $query->where('status', $status))
             ->get();
 
-        $statusIdea = Auth::user()->ideas()->selectRaw('status, count(*) as count')->groupBy('status')->pluck('count', 'status');
-        // return $statusIdea;
-
-        $statusCounts = collect(IdeaStatus::cases())
-            ->mapWithKeys( fn ($status) => [$status->value => $statusIdea->get($status->value, 'NaN')])
-            ->put('all', Auth::user()->ideas()->count());
+        $counts = Idea::getStatusCounts(Auth::user());
 
         return view('idea.index', [
             'ideas' => $ideas,
-            'statuses' => $statusCounts
+            'statuses' => $counts
         ]);
     }
 

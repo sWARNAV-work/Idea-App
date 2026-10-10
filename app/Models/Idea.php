@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 class Idea extends Model
 {
@@ -21,6 +22,17 @@ class Idea extends Model
     protected $attributes = [                   // Assigning an initial value to 'status'
         'status' => IdeaStatus::PENDING->value  // Getting the Value of the enum rather than the enum itself
     ];
+
+    public static function getStatusCounts(User $user): Collection
+    {
+        $statusIdea = $user->ideas()->selectRaw('status, count(*) as count')->groupBy('status')->pluck('count', 'status');
+        // return $statusIdea;
+
+        return collect(IdeaStatus::cases())
+            ->mapWithKeys( fn ($status) => [$status->value => $statusIdea->get($status->value, 'NaN')])
+            ->put('all', $user->ideas()->count());
+
+    }
 
     public function user(): BelongsTo
     {

@@ -7,14 +7,16 @@
             </p>
         </header>
 
-        <div class=" mt-10 flex gap-3 text-center justify-between">
-            <a href="/ideas" class="btn btn-outlined inline-full {{ request('status') === null ? 'bg-primary-foreground text-black font-extrabold' : "" }} ">
-                All <span class="text-xs pl-2">{{ $statuses->get('all') }}
+        <div class=" mt-10 flex gap-3 text-center">
+            <a href="/ideas"
+                class="btn btn-outlined inline-full {{ request('status') === null ? 'bg-primary-foreground text-black font-extrabold' : "" }} ">
+                All <span class="text-xs pl-3">{{ $statuses->get('all') }}</span>
             </a>
             @foreach(App\IdeaStatus::cases() as $status)
-                <a href="/ideas?status={{ $status }}" class="btn btn-outlined inline-full 
-                {{ request('status') === $status->value ? 'bg-primary-foreground text-black font-extrabold' : '' }}">
-                 {{ $status->label() }} <span class="text-xs pl-2" >{{ $statuses->get($status->value) }}<span></a>
+                <a href="/ideas?status={{ $status->value }}" class="btn btn-outlined inline-full 
+                    {{ request('status') === $status->value ? 'bg-primary-foreground text-black font-extrabold' : '' }}">
+                    {{ $status->label() }} <span
+                        class="text-sm pl-3 font-extrabold">{{ $statuses->get($status->value) }}<span></a>
             @endforeach
         </div>
 
@@ -35,7 +37,8 @@
                 </x-card>
 
             @empty
-                <p class="text-foreground text-sm  border border-yellow-300">No Ideas yet? Here are some Suggestions to Fabricate your
+                <p class="text-foreground text-sm">No Ideas yet? Here are some Suggestions to
+                    Fabricate your
                     own!</p>
                 {{-- Add Inspirational Fabrications when empty --}}
             @endforelse
