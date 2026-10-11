@@ -59,8 +59,8 @@ class IdeaController extends Controller
     {
 
         return view('idea.show', [
-            'idea' => $idea->title,
-            'description' => $idea->description,
+            'idea' => $idea
+            // 'description' => $idea->description,
         ]);
     }
 
@@ -69,7 +69,10 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
-        //
+        // Authorize that this is allowed
+        return view('idea.edit', [
+            'idea' => $idea
+        ]);
     }
 
     /**
@@ -85,6 +88,10 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
-        //
+        // Authorize that this is allowed
+
+        $idea->delete();
+
+        return redirect(route('idea.index')); // also available `return to_route('idea.index')
     }
 }
