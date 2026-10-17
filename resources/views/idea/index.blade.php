@@ -56,9 +56,44 @@
 
         <x-modal name="create-idea">
 
-            <x-card class="pb-2" @click.away="show = false" title="Fabrication" h3_id="modal-create-idea-title">
-                <p> This is the modal</p>
-            </x-card>
+            <form x-data="{ status: 'pending' }" method="POST" action="{{ route('idea.store') }}" class="gap-y-3 pb-2">
+                @csrf
+
+                    <x-form.field name="title" label="Name" default="Name your Fabrication!" autofocus required/>
+
+                    <div class="flex justify-between mt-5">
+                        <h3 class="text-foreground">Idea</h3>
+                        <div class="flex justify-between space-x-4">
+                            @foreach(App\IdeaStatus::cases() as $status)
+                                <button type="button" 
+                                    class="btn btn-ghost"
+                                    @click="status = @js($status->value)"
+                                    :class="{'text-primary': status === @js($status->value)}"
+                                >
+                                    {{ $status->label() }}
+                                </button>
+
+                            @endforeach
+                            <input type="hidden" name="status" :value="status" class="input" >
+                        </div>
+                        <x-errors name="status" />
+                    </div>
+
+                    <x-form.field name="description" type="textarea" default="Fabrication begins here!" /> 
+
+                    <div class="flex justify-end gap-3">
+                        
+                        <button type="button" 
+                        class="btn-ghost text-foreground"
+                        @click="show = false"
+                        >
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="btn">Fabricate!</button>
+                    </div>
+                    
+            </form>
 
         </x-modal>
 

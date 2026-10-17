@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [SessionsController::class, 'destroy']);
     Route::get('/ideas', [IdeaController::class, 'index'])->name('idea.index');
     Route::get('/idea/{idea}', [IdeaController::class, 'show'])->name('idea.show');
+    Route::post('/ideas', [IdeaController::class, 'store'])->name('idea.store');
     Route::get('/idea/{idea}/edit', [IdeaController::class, 'edit'])->name('idea.edit');
     Route::delete('/idea/{idea}/destroy', [IdeaController::class, 'destroy'])->name('idea.destroy');
 });

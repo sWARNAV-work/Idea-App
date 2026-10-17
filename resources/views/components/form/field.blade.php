@@ -1,8 +1,13 @@
-@props(['name', 'label', 'default' => 'text', 'type' => 'text'])
+@props(['name', 'label' => false, 'default' => 'text', 'type' => 'text'])
 
-<label for="{{ $name }}" class="label mt-3">{{ $label }}</label>
-<input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" class="input" value="{{ old($name, '') }}" placeholder="{{ $default }}" {{ $attributes }}>
+@if ($label)
+    <label for="{{ $name }}" class="label mt-3">{{ $label }}</label>
+@endif
 
-@error($name)
-    <p class="error text-red-600 mt-2">{{ $message }}</p>
-@enderror
+@if ($type === 'textarea')
+    <textarea name="{{ $name }}" id="{{ $name }}" class="textarea" {{ $attributes }} placeholder="{{ $default }}">{{ old($name, '') }}</textarea>
+@else
+    <input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" class="input" value="{{ old($name, '') }}" placeholder="{{ $default }}" {{ $attributes }}>
+@endif
+
+<x-errors name="{{ $name }}" />

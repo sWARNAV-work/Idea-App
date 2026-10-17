@@ -18,14 +18,15 @@ class IdeaController extends Controller
     public function index()
     {
 
-        $status = request('status');
+        // $status = request('status');                            // Entire thing could be inlined, as shown below
 
-        if (! in_array($status, IdeaStatus::values())) {
-            $status = null;
-        }
+        // if (! in_array($status, IdeaStatus::values())) {
+        //     $status = null;
+        // }
 
         $ideas = Auth::user()->ideas()
-            ->when($status, fn ($query, $status) => $query->where('status', $status))
+            ->when(in_array(request('status'), IdeaStatus::values()), fn ($query) => $query->where('status', request('status')))
+            ->latest()
             ->get();
 
         $counts = Idea::getStatusCounts(Auth::user());
@@ -49,7 +50,9 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request)
     {
-        //
+        Auth::user()->ideas()->create($request->validated());
+
+        return to_route('idea.index')->with('success', 'Your Idea is now Fabricated!');
     }
 
     /**

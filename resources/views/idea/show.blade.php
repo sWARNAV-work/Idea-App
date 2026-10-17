@@ -36,7 +36,7 @@
         </div>
 
         <div class="mt-10">
-            <x-card class="text-justify pb-8 px-6 text-2xl">
+            <x-card class="text-justify py-8 px-6 text-2xl">
                 {{ $idea->description }}
             </x-card>
         </div>

@@ -21,16 +21,33 @@ p:not(.cursor-pointer)
 .input
 {
     border: solid 1px var(--color-muted-foreground);
+    color: var(--color-foreground);
     border-radius: var(--radius-sm);
     font-size: var(--text-sm);
-    font-weight: var(--font-weight-extralight);
+    font-weight: var(--font-weight-light);
     padding-inline: --spacing(2);
     height: --spacing(8);
     line-height: --spacing(8);
     caret-color: white !important;
 }
-
 .input::placeholder
+{
+    color: var(--color-muted-foreground);
+}
+
+
+.textarea
+{
+    color: var(--color-foreground);
+    border: solid 1px var(--color-muted-foreground);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-light);
+    padding-inline: --spacing(2);
+    line-height: --spacing(8);
+    caret-color: white !important;
+}
+.textarea:placeholder
 {
     color: var(--color-muted-foreground);
 }
