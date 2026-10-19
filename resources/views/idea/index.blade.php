@@ -11,6 +11,7 @@
             <h3 class="text-3xl ">Fabricate an Idea</h3>
             <x-card is="button" type="button" 
                 x-data @click="$dispatch('open-modal', 'create-idea')"
+                data-test="create-idea-button"
                 class="text-center py-9 text-2xl mt-5 cursor-text inline-full">
                 <div class="flex justify-center items-center gap-4">
                     Start Fabrication HERE!<span class="blink-cursor -mt-3"><x-icons.nib class="fill-current" /></span>
@@ -26,7 +27,8 @@
             @foreach(App\IdeaStatus::cases() as $status)
                 <a href="/ideas?status={{ $status->value }}"
                     class="btn btn-outlined inline-full 
-                                {{ request('status') === $status->value ? 'bg-primary-foreground text-black font-extrabold' : '' }}">
+                    {{ request('status') === $status->value ? 'bg-primary-foreground text-black font-extrabold' : '' }}"
+                >
                     {{ $status->label() }} <span
                         class="text-sm pl-3 font-extrabold">{{ $statuses->get($status->value) }}<span></a>
             @endforeach
@@ -62,11 +64,14 @@
                     <x-form.field name="title" label="Name" default="Name your Fabrication!" autofocus required/>
 
                     <div class="flex justify-between mt-5">
+
                         <h3 class="text-foreground">Idea</h3>
+
                         <div class="flex justify-between space-x-4">
                             @foreach(App\IdeaStatus::cases() as $status)
                                 <button type="button" 
                                     class="btn btn-ghost"
+                                    data-test="button-status-{{ $status->value }}"
                                     @click="status = @js($status->value)"
                                     :class="{'text-primary': status === @js($status->value)}"
                                 >
