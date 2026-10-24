@@ -58,10 +58,10 @@
 
         <x-modal name="create-idea">
 
-            <form x-data="{ status: 'pending' }" method="POST" action="{{ route('idea.store') }}" class="gap-y-3 pb-2">
+            <form x-data="{ status: @js( old($status->value, 'pending')), links: @js( old('links', []) ), newLink: ''}" method="POST" action="{{ route('idea.store') }}" class="gap-y-3 pb-2">
                 @csrf
 
-                    <x-form.field name="title" label="Name" default="Name your Fabrication!" autofocus required/>
+                    <x-form.field name="title" label="Name" default="Name your Fabrication!" autofocus required />
 
                     <div class="flex justify-between mt-5">
 
@@ -86,6 +86,46 @@
 
                     <x-form.field name="description" type="textarea" default="Fabrication begins here!" /> 
 
+                    <div>
+                        <fieldset class="flex-col gap-3">
+                            <legend class="label">Links</legend>
+
+                            <div class="flex flex-wrap gap-3 my-2 ">
+                                <template x-for="(link, index) in links" :key="index">
+                                <div class="flex max-inline-xs truncate pill">
+                                    <input type="hidden" name="links[]" x-model="link">
+                                    <p class="truncate" x-text="link.replace(/^https?:\/\//, '')"></p>
+                                    <button type="button"
+                                        @click="links.splice(index, 1)"
+                                        class="stroke-foreground text-center"
+                                    >
+                                        <x-icons.cross class="w-1 h-1"/>
+                                    </button>
+                                </div>
+                                </template>
+                            </div>
+
+                            <div class="flex gap-3">
+                                    <input type="url"
+                                    class="input flex-1"
+                                    id="new-link"
+                                    placeholder="http://example.com"
+                                    autocomplete="url"
+                                    spellcheck="false"
+                                    x-model="newLink"
+                                >
+                                <button type="button" 
+                                    class="stroke-foreground rotate-45" 
+                                    @click="links.push(newLink.trim()); newLink=''"
+                                    :disabled="newLink.trim() === ''"
+                                    aria-label="add new link"
+                                    data-test="add-new-link"
+                                ><x-icons.cross /></button>
+                            </div>
+                            
+                        </fieldset>
+
+                    </div>
                     <div class="flex justify-end gap-3">
                         
                         <button type="button" 

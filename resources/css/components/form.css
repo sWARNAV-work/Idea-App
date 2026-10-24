@@ -64,6 +64,16 @@ p:not(.cursor-pointer)
     border: solid 1px color-mix(in srgb, black 71%, var(--color-highlight));
 }
 
+.pill
+{
+    border-radius: var(--radius-lg);
+    background-color: var(--color-primary);
+    color: white;
+    font-size: var(--text-sm);
+    padding-inline: --spacing(2);
+
+}
+
 .blink-cursor
 {
     animation: blink 3s linear 1s infinite;
